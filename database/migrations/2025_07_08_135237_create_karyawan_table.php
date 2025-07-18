@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('posisi');
-            $table->string('departemen');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

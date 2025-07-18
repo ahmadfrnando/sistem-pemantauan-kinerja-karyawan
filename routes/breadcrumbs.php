@@ -8,12 +8,37 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 //  with `$trail`. This is nice for IDE type checking and completion.
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
-// Home
-Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
-    $trail->push('Home', route('home'));
+// admin
+Breadcrumbs::for('admin.dashboard', function (BreadcrumbTrail $trail) {
+    $trail->push('Pages', route('admin.dashboard'));
 });
 
-// Breadcrumbs::for('admin.hasil-panen.index', function (BreadcrumbTrail $trail) {
-//     $trail->parent('admin.dashboard');
-//     $trail->push('Pemanenan', route('admin.hasil-panen.index'));
-// });
+// admin -> manajemen-pengguna
+Breadcrumbs::for('admin.manajemen-pengguna.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Manajemen Pengguna', route('admin.manajemen-pengguna.index'));
+});
+
+// admin -> manajemen-karyawan
+Breadcrumbs::for('admin.manajemen-karyawan.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Manajemen Karyawan', route('admin.manajemen-karyawan.index'));
+});
+
+// admin -> manajemen-tugas
+Breadcrumbs::for('admin.manajemen-tugas.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Manajemen Tugas', route('admin.manajemen-tugas.index'));
+});
+
+// admin -> manajemen-tugas -> add
+Breadcrumbs::for('admin.manajemen-tugas.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.manajemen-tugas.index');
+    $trail->push('Tambah Tugas', route('admin.manajemen-tugas.create'));
+});
+
+// admin -> manajemen-tugas -> edit
+Breadcrumbs::for('admin.manajemen-tugas.edit', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.manajemen-tugas.index');
+    $trail->push('Ubah Tugas', route('admin.manajemen-tugas.edit', 'id'));
+});

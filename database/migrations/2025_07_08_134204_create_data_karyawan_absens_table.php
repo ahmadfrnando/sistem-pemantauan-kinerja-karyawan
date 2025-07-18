@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kinerja', function (Blueprint $table) {
+        Schema::create('data_karyawan_absen', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('karyawan_id');
             $table->date('tanggal');
-            $table->integer('persentase_penyelesaian_tugas'); // Nilai antara 0-100
-            $table->boolean('persentase_kehadiran')->nullable(); // Nilai antara 0-100
+            $table->time('jam_masuk')->nullable();
+            $table->time('jam_keluar')->nullable();
+            $table->enum('status', ['hadir', 'absen'])->default('hadir');
+            $table->text('bukti_absen')->nullable();
+            $table->text('keterangan');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kinerja');
+        Schema::dropIfExists('data_karyawan_absen');
     }
 };

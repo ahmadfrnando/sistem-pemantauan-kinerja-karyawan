@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('kinerja', function (Blueprint $table) {
-            $table->integer('status_kehadiran_id')->default(1);
-            $table->dropColumn('persentase_kehadiran');
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('role', ['admin', 'karyawan']);
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('kinerja', function (Blueprint $table) {
-            $table->dropColumn('status_kehadiran_id');
-            $table->float('persentase_kehadiran');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('role');
         });
     }
 };
