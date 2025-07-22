@@ -11,7 +11,7 @@ class ManajemenTugas extends Model
 
     protected $table = 'manajemen_tugas';
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     public function status()
     {

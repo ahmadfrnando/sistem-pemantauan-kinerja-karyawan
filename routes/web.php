@@ -4,10 +4,13 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ManajemenKaryawanController;
 use App\Http\Controllers\Admin\ManajemenPenggunaController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Karyawan\DaftarTugasController as KaryawanDaftarTugasController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ManajemenTugasController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Karyawan\DashboardController as KaryawanDashboardController;
+use App\Http\Controllers\Karyawan\RiwayatTugasController as KaryawanRiwayatTugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +40,13 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::resource('/manajemen-pengguna', ManajemenPenggunaController::class);
     Route::resource('/manajemen-karyawan', ManajemenKaryawanController::class);
     Route::resource('/manajemen-tugas', ManajemenTugasController::class);
+});
+
+Route::middleware(['auth', 'role:karyawan'])->name('karyawan.')->prefix('karyawan')->group(function () {
+    Route::get('/dashboard', KaryawanDashboardController::class)->name('dashboard');
+    Route::resource('/daftar-tugas', KaryawanDaftarTugasController::class);
+    Route::put('/daftar-tugas/{jenis}/{id?}', [KaryawanDaftarTugasController::class, 'updateTugas'])->name('daftar-tugas.update-tugas');
+    Route::resource('/riwayat-tugas', KaryawanRiwayatTugasController::class);
 });
 
 Route::get('/get-data', function () {

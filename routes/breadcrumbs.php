@@ -42,3 +42,19 @@ Breadcrumbs::for('admin.manajemen-tugas.edit', function (BreadcrumbTrail $trail)
     $trail->parent('admin.manajemen-tugas.index');
     $trail->push('Ubah Tugas', route('admin.manajemen-tugas.edit', 'id'));
 });
+
+// karyawan
+Breadcrumbs::for('karyawan.dashboard', function (BreadcrumbTrail $trail) {
+    $trail->push('Pages', route('karyawan.dashboard'));
+});
+// karyawan -> daftar tugas
+Breadcrumbs::for('karyawan.daftar-tugas.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('karyawan.dashboard');
+    $trail->push('Tugas', route('karyawan.daftar-tugas.index'));
+});
+
+// karyawan -> riwayat tugas
+Breadcrumbs::for('karyawan.riwayat-tugas.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('karyawan.dashboard');
+    $trail->push('Riwayat', route('karyawan.riwayat-tugas.index'));
+});
