@@ -25,6 +25,18 @@ Breadcrumbs::for('admin.manajemen-karyawan.index', function (BreadcrumbTrail $tr
     $trail->push('Manajemen Karyawan', route('admin.manajemen-karyawan.index'));
 });
 
+// admin -> manajemen-evaluasi-kinerja
+Breadcrumbs::for('admin.manajemen-evaluasi-kinerja.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+    $trail->push('Evaluasi Kinerja', route('admin.manajemen-evaluasi-kinerja.index'));
+});
+
+// admin -> manajemen-evaluasi-kinerja -> show
+Breadcrumbs::for('admin.manajemen-evaluasi-kinerja.show', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.manajemen-evaluasi-kinerja.index');
+    $trail->push('Detail', route('admin.manajemen-evaluasi-kinerja.show', 'id'));
+});
+
 // admin -> manajemen-tugas
 Breadcrumbs::for('admin.manajemen-tugas.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
@@ -57,4 +69,10 @@ Breadcrumbs::for('karyawan.daftar-tugas.index', function (BreadcrumbTrail $trail
 Breadcrumbs::for('karyawan.riwayat-tugas.index', function (BreadcrumbTrail $trail) {
     $trail->parent('karyawan.dashboard');
     $trail->push('Riwayat', route('karyawan.riwayat-tugas.index'));
+});
+
+// karyawan -> absensi harian
+Breadcrumbs::for('karyawan.absensi-harian.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('karyawan.dashboard');
+    $trail->push('Absensi Harian', route('karyawan.absensi-harian.index'));
 });

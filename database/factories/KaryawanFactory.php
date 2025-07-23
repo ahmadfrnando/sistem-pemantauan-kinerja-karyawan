@@ -18,8 +18,8 @@ class KaryawanFactory extends Factory
     {
         return [
             'nama' => $this->faker->name(),
-            'posisi' => $this->faker->jobTitle(),
-            'user_id' => \App\Models\User::factory()->create()->id,
+            'posisi' => 'karyawan',
+            'user_id' => \App\Models\User::factory()->create(['name' => $this->faker->name()])->id,
         ];
     }
 }

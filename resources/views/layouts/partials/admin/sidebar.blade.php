@@ -34,14 +34,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="#">
-                    <i class="material-symbols-rounded opacity-5">table_view</i>
-                    <span class="nav-link-text ms-1">Manajemen Laporan Kinerja</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="#">
-                    <i class="material-symbols-rounded opacity-5">table_view</i>
+                <a class="nav-link {{ request()->routeIs('admin.manajemen-evaluasi-kinerja.*') ? 'active bg-gradient-dark text-white' : '' }} text-dark" href="{{ route('admin.manajemen-evaluasi-kinerja.index') }}">
+                    <i class="material-symbols-rounded opacity-5">chart_data</i>
                     <span class="nav-link-text ms-1">Manajemen Evaluasi Kinerja</span>
                 </a>
             </li>

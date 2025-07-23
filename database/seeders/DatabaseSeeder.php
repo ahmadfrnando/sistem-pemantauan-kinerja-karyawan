@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             KaryawanSeeder::class,
             ManajemenTugasSeeder::class,
+            DataKaryawanAbsenSeeder::class
         ]);
     }
 }

@@ -16,6 +16,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('karyawan.absensi-harian.*') ? 'active bg-gradient-dark text-white' : '' }} text-dark" href="{{ route('karyawan.absensi-harian.index') }}">
+                    <i class="material-symbols-rounded opacity-5">camera</i>
+                    <span class="nav-link-text ms-1">Absensi Harian</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('karyawan.daftar-tugas.*') ? 'active bg-gradient-dark text-white' : '' }} text-dark" href="{{ route('karyawan.daftar-tugas.index') }}">
                     <i class="material-symbols-rounded opacity-5">table_view</i>
                     <span class="nav-link-text ms-1">Daftar Tugas</span>

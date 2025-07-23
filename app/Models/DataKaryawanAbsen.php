@@ -12,4 +12,9 @@ class DataKaryawanAbsen extends Model
     protected $table = 'data_karyawan_absen';
 
     protected $guarded = [];
+
+    public function karyawan()
+    {
+        return $this->belongsTo(Karyawan::class, 'karyawan_id', 'id');
+    }
 }
