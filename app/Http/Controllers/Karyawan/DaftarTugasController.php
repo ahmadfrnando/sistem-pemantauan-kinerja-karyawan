@@ -23,10 +23,10 @@ class DaftarTugasController extends Controller
     }
 
     public function index()
-    {
+    {   
         $karyawan = $this->karyawan->first();
-        $tugasBelum = ManajemenTugas::where(['karyawan_id' => 3])->where('status_tugas_id', 1)->orderBy('created_at', 'desc')->paginate(5);
-        $tugasSudah = ManajemenTugas::where(['karyawan_id' => 3])->where('status_tugas_id', 2)->orderBy('created_at', 'desc')->paginate(5);
+        $tugasBelum = ManajemenTugas::where(['karyawan_id' => $this->karyawan->id])->where('status_tugas_id', 1)->orderBy('created_at', 'desc')->paginate(5);
+        $tugasSudah = ManajemenTugas::where(['karyawan_id' => $this->karyawan->id])->where('status_tugas_id', 2)->orderBy('created_at', 'desc')->paginate(5);
 
         $tugas = [
             'tugasBelum' => $tugasBelum,

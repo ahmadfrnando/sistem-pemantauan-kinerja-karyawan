@@ -13,6 +13,22 @@ class Karyawan extends Model
 
     protected $guarded = ['id'];
 
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($item) {
+            $user = User::create([
+                'name' => $item->nama,
+                'username' => str_replace(' ', '', $item->nama) . $item->id,
+                'password' => bcrypt('123'),
+                'role' => 'karyawan',
+            ]);
+            $item->update(['user_id' => $user->id]);
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
