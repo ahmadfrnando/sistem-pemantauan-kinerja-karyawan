@@ -19,14 +19,17 @@ class DaftarTugasController extends Controller
 
     public function __construct()
     {
-        $this->karyawan = Karyawan::where('user_id', Auth::id());
+        // $this->karyawan = Karyawan::where('user_id', Auth::id());
+        $userId = auth()->id();
+        $this->karyawan = Karyawan::where('user_id', $userId)->first();
     }
 
     public function index()
-    {   
-        $karyawan = $this->karyawan->first();
-        $tugasBelum = ManajemenTugas::where(['karyawan_id' => $this->karyawan->id])->where('status_tugas_id', 1)->orderBy('created_at', 'desc')->paginate(5);
-        $tugasSudah = ManajemenTugas::where(['karyawan_id' => $this->karyawan->id])->where('status_tugas_id', 2)->orderBy('created_at', 'desc')->paginate(5);
+    {
+        $userId = auth()->id();
+        $karyawan = Karyawan::where('user_id', $userId)->first();
+        $tugasBelum = ManajemenTugas::where(['karyawan_id' => $karyawan->id])->where('status_tugas_id', 1)->orderBy('created_at', 'desc')->paginate(5);
+        $tugasSudah = ManajemenTugas::where(['karyawan_id' => $karyawan->id])->where('status_tugas_id', 2)->orderBy('created_at', 'desc')->paginate(5);
 
         $tugas = [
             'tugasBelum' => $tugasBelum,
