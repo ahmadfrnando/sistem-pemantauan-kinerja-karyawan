@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="card-body pt-0 p-3 text-center">
-                        <h6 class="text-center mb-0">{{ $t->nama-tugas }}</h6>
+                        <h6 class="text-center mb-0">{{ $t->nama_tugas }}</h6>
                         <span class="text-xs">{{ $t->deskripsi }}</span>
                         <span class="text-xs">. Dibuat pada:</span>
                         <span class="text-xs">{{ \Carbon\Carbon::parse($t->created_at)->format('d F Y') }}</span>

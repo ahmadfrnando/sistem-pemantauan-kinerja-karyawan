@@ -94,7 +94,7 @@ class ManajemenEvaluasiKinerjaController extends Controller
                     ->get();
 
                 if ($getAbsensi->count() > 0) {
-                    $skorAbsensi = intval(($getAbsensi->count() / 44) * 100);
+                    $skorAbsensi = intval(($getAbsensi->count() / 22) * 100);
                 }
 
                 $getTugas = ManajemenTugas::where('karyawan_id', $item->id)
